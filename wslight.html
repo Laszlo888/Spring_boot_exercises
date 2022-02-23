@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="webshop.css">
+</head>
+<body>
+    <a href="http://localhost:8080/webshop"><p id="myshop">My Shop</p></a>
+    <a href="http://localhost:8080/more-filters"><p id="more">More >></p></a>
+    <div id="uppestDiv"></div>
+    <div id="button_up">
+        <a href="http://localhost:8080/only-available"><button class="buttons_underHeader">ONLY AVAILABLE</button></a>
+        <a href="http://localhost:8080/cheapest-first"><button class="buttons_underHeader">CHEAPEST FIRST</button></a>
+        <a href="http://localhost:8080/contains-nike"><button class="buttons_underHeader">CONTAINS NIKE</button></a>
+        <a href="http://localhost:8080/average-stock"><button class="buttons_underHeader">AVERAGE STOCK</button></a>
+        <a href="http://localhost:8080/most-expensive"><button class="buttons_underHeader">MOST EXPENSIVE AVAILABLE</button></a>
+    </div>
+     <form action="/search" method="post">
+  		<label for="wsearch">Search for:</label><br>
+  		<input type="search" id="wsearch" name="gsearch" placeholder="...something like nike">
+  		<input type="submit" value="Search" id="wsearch_button">
+	</form>
+	<h1 th:text="${aveStock}"></h1>
+	<h1 th:text="${mExp}"></h1>
+</body>
+</html>

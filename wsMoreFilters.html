@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="/webshop.css">
+</head>
+<body>
+	<a href="http://localhost:8080/webshop"><p id="myshop">&lt;&lt;My Shop</p></a>
+	<a href="http://localhost:8080/more-filters"><p id="more">More</p></a>
+	<div id="uppestDiv"></div>
+	<div id="button_up">
+		<a href="http://localhost:8080/filter-by-type/cloth_and_shoes"><button class="buttons_underHeader">CLOTHES AND SHOES</button></a> 
+		<a href="http://localhost:8080/filter-by-type/electronics"><button class="buttons_underHeader">ELECTRONICS</button></a> 
+		<a href="http://localhost:8080/filter-by-type/beverages_and_snacks"><button class="buttons_underHeader">BEVERAGES AND SNACKS</button></a> 
+		<a href="http://localhost:8080/price-in-eur"><button class="buttons_underHeader">EURO</button></a> 
+		<a href="http://localhost:8080/price-in-original"><button class="buttons_underHeader">ORIGINAL CURRENCY</button></a>
+	</div>
+	<form action="/filter-by-price" method="post" id="formMore">
+		<label for="wsearchMore" id="labelMore">Filter by price:</label><br>
+		<input type="submit" name="above" value="Above" class="buttons_secondrowMore"> 
+		<input type="submit" name="below" value="Below" class="buttons_secondrowMore"> 
+		<input type="submit" name="exactly" value="Exactly" class="buttons_secondrowMore"> 
+		<input type="search" id="wsearchMore" name="wsearchMore" placeholder="...e.g.: 300">
+	</form>
+
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Quantity of stock</th>
+		</tr>
+		<tr th:each="typ:${mFilt}">
+			<td th:text="${typ.name}" class="fs25"></td>
+			<td th:text="${typ.type}" class="fstype"></td>
+			<td th:text="${typ.description}" class="fs15"></td>
+			<td th:utext="${typ.price+'<br>'+' K&#269;'}" class="fs25"></td>
+			<td th:text="${typ.qstock}" class="fs25"></td>
+		</tr>
+		<tr th:each="cs:${clsh}">
+			<td th:text="${cs.name}" class="fs25"></td>
+			<td th:text="${cs.type}" class="fstype"></td>
+			<td th:text="${cs.description}" class="fs15"></td>
+			<td th:utext="${cs.price+'<br>'+' K&#269;'}" class="fs25"></td>
+			<td th:text="${cs.qstock}" class="fs25"></td>
+		</tr>
+		<tr th:each="ele:${el}">
+			<td th:text="${ele.name}" class="fs25"></td>
+			<td th:text="${ele.type}" class="fstype"></td>
+			<td th:text="${ele.description}" class="fs15"></td>
+			<td th:utext="${ele.price+'<br>'+' K&#269;'}" class="fs25"></td>
+			<td th:text="${ele.qstock}" class="fs25"></td>
+		</tr>
+		<tr th:each="bs:${bevsna}">
+			<td th:text="${bs.name}" class="fs25"></td>
+			<td th:text="${bs.type}" class="fstype"></td>
+			<td th:text="${bs.description}" class="fs15"></td>
+			<td th:utext="${bs.price+'<br>'+' K&#269;'}" class="fs25"></td>
+			<td th:text="${bs.qstock}" class="fs25"></td>
+		</tr>
+		<tr th:each="eur:${eu}">
+			<td th:text="${eur.name}" class="fs25"></td>
+			<td th:text="${eur.type}" class="fstype"></td>
+			<td th:text="${eur.description}" class="fs15"></td>
+			<td th:utext="${eur.price+'<br>'+' &#128;'}" class="fs25"></td>
+			<td th:text="${eur.qstock}" class="fs25"></td>
+		</tr>
+		<tr th:each="pab:${pa}">
+			<td th:text="${pab.name}" class="fs25"></td>
+			<td th:text="${pab.type}" class="fstype"></td>
+			<td th:text="${pab.description}" class="fs15"></td>
+			<td th:utext="${pab.price+'<br>'+' K&#269;'}" class="fs25"></td>
+			<td th:text="${pab.qstock}" class="fs25"></td>
+		</tr>
+		<tr th:each="pbe:${pb}">
+			<td th:text="${pbe.name}" class="fs25"></td>
+			<td th:text="${pbe.type}" class="fstype"></td>
+			<td th:text="${pbe.description}" class="fs15"></td>
+			<td th:utext="${pbe.price+'<br>'+' K&#269;'}" class="fs25"></td>
+			<td th:text="${pbe.qstock}" class="fs25"></td>
+		</tr>
+		<tr th:each="pex:${pe}">
+			<td th:text="${pex.name}" class="fs25"></td>
+			<td th:text="${pex.type}" class="fstype"></td>
+			<td th:text="${pex.description}" class="fs15"></td>
+			<td th:utext="${pex.price+'<br>'+' K&#269;'}" class="fs25"></td>
+			<td th:text="${pex.qstock}" class="fs25"></td>
+		</tr>
+	</table>
+	<p th:text="${proba}"></p>
+	<br>
+	<br>
+</body>
+</html>
